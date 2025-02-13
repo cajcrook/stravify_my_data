@@ -10,7 +10,7 @@
 .title {
   font-size: 2rem;
   font-weight: bold;
-  color: #FC5200;
+  color: #00acfc;
   margin-bottom: 16px;
 }
 
@@ -26,6 +26,22 @@
 
 .load-button:hover {
   background-color: #FF6A00;
+}
+
+/* Sport Selection Style */
+.sport-selection {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sport-dropdown {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  margin-left: 8px;
 }
 
 /* Loading Text Style */

@@ -47,7 +47,7 @@ def get_all_activities():
 
 
 # Code for the 5 latest activity
-def get_latest_10_activity():
+def get_latest_5_activity():
     """Fetch the latest Strava activity."""
     activities = get_all_activities()
     if "error" in activities:
@@ -55,6 +55,15 @@ def get_latest_10_activity():
     if isinstance(activities, list) and len(activities) > 0:
         return activities[:5]  # Return 10 latest activities
     return {"error": "No activities found"}
+
+# Code for the 5 latest activities by sport
+def get_latest_5_activity_by_sport(sport_type):
+    """Fetch the latest Strava activity filtered by sport."""
+    activities = get_all_activities()
+    if "error" in activities:
+        return activities  # Return the error if authentication fails
+    filtered_activities = [activity for activity in activities if activity['sport_type'].lower() == sport_type.lower()]
+    return filtered_activities[:5] if filtered_activities else {"error": "No activities found for this sport."}
 
 
 
@@ -71,11 +80,17 @@ def get_all():
     """Return activities as JSON in the browser."""
     return jsonify(get_all_activities())
 
-# # # Route for lastest 10 activities
+# # # Route for lastest 5 activities
 @app.route('/latest', methods=['GET'])
 def latest_activity():
-    """API route to fetch the latest activity."""
-    return jsonify(get_latest_10_activity())  # Return only the latest activity
+    return jsonify(get_latest_5_activity())  # Return only the latest activity
+
+# Route for latest activities by sport
+@app.route('/latest/<sport>', methods=['GET'])
+def latest_activity_by_sport(sport):
+    """API route to fetch the latest activities by selected sport."""
+    return jsonify(get_latest_5_activity_by_sport(sport))  # Return only the latest 5 activities for the selected sport
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=int(os.environ.get('PORT', 5001)))
