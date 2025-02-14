@@ -1,0 +1,36 @@
+/* PersonalBests.css */
+
+/* Container for the row */
+.personal-bests-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Column styles */
+  .personal-bests-col {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    .personal-bests-col {
+      width: 50%;  /* Equivalent to col-md-6 */
+    }
+  }
+  
+  /* Card content styles */
+  .card-header {
+    font-size: 1.25rem; /* Equivalent to h5 */
+    font-weight: bold;
+  }
+  
+  .card-content {
+    font-size: 1.5rem; /* Equivalent to h4 */
+  }
+  
+  .subtitle {
+    font-size: 1.75rem; /* Equivalent to h3 */
+    font-weight: 600; /* Equivalent to font-weight-semibold */
+    margin-top: 1.5rem;
+    text-align: center; /* Centers the subtitle text */
+}
